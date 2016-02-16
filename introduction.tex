@@ -1,0 +1,33 @@
+\section{Introduction}
+
+Robot dexterity is critically important for robots working alongside people and for robots working in human spaces.    Robots must be able to manipulate human objects and use tools made for people in order to assist people in performing tasks from mission critical to everyday.   
+
+Unfortunately, despite decades of development of high degree-of-freedom dexterous robot hands since the 80's, dexterous manipulation has remained elusive.  Dexterity is a Grand Challenge level goal.   In fact, the 2013 Robotics Roadmap [REFERENCE THIS PROPERLY] states:
+\begin{quotation}
+{\small \it
+Robot arms and hands will eventually out-perform human hands. This is already true in terms of speed and strength. However, human hands still out-perform their robotic counterparts in tasks requiring dexterous manipulation. This is due to gaps in key technology areas, especially perception, robust high fidelity sensing, and planning and control. The roadmap for human-like dexterous manipulation consists of the following milestones:
+\begin{itemize}
+	\item 5 years: Low-complexity hands with small numbers of independent joints will be capable of robust whole-hand grasp acquisition.
+	\item 10 years: Medium-complexity hands with ten or more independent joints and novel mechanisms and actuators will be capable of whole-hand grasp acquisition and limited dexterous manipulation.
+	\item 15 years: High-complexity hands with tactile array densities, approaching that of humans and with superior dynamic performance, will be capable of robust whole-hand grasp acquisition and dexterous manipulation of objects found in manufacturing environments used by human workers.
+\end{itemize}}
+\end{quotation}
+These goals are echoed in the NIST publication "A Roadmap to Progress Measurement Science in Robot Dexterity and Manipulation" [REF].
+In this set of milestones, dexterous manipulation is not mentioned at all for the 5 year mark.   Dexterity is expected in limited form at 10 years, and we are expected to achieve dexterous manipulation in robot hands in 15 years time.
+
+{\it We propose to enable considerable dexterity at the 5 year mark through task directed design with focus on joint limits and compliance.}
+
+There are many very excellent research groups working on the critical areas sensing, planning, and control.   Our approach is orthogonal and complementary to these efforts.    We aim to reduce the load on sensing, planning and control by designing the mechanism -- the robot hand -- to be as favorable to the intended task set as possible, i.e., by developing new analysis and design tools for crafting the robot hand mechanism to make dexterous manipulation easier from the start.
+
+Our approach centers around several elements:
+\begin{itemize}
+  \item {\bf Develop a "Grasp Net" Benchmark.}   We have observed from human studies that there are a relatively small number of grasping tasks and manipulation actions that are used over and over, and that common and useful grasp families are connected to one another with frequently used manipulation actions.   We propose to create grasp net benchmark consisting of grasp families and manipulations to move between them.   Mechanisms will be designed specifically to accomplish this grasp net.
+	
+\item {\bf Design Towards Specific Tasks.}   We propose to design hands from the ground up with the specific goal of performing these grasping and manipulation tasks robustly.    Even while we may ultimately want a general purpose hand, evaluating a design vs. a comprehensive set of representative grasps and manipulation actions allows us to align our evaluation of suggested hands with useful tasks in the real world.
+
+\item {\bf Strategically Place Actuators, Joint Limits, and Compliance.}  Actuators of many types:  tendon, linkage, flexible.   Plus new analysis tools revolving around joint limits...   Plus better understanding of design space for compliant joints and other components.... [FLESH OUT]
+
+\end{itemize}	
+	
+Why us?   Synergistic combination of experience in grasp analysis and experience with robot hands and manipulation with expertise in mechanism design and construction.   It is a great opportunity to develop the tools and make use of them to design robot hands to perform exactly the interactions that are needed for scenarios where humans and robots live and work together.
+

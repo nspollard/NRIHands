@@ -1,0 +1,28 @@
+\section{Dexterous Manipulation Analysis with Joint Limits and Compliance}
+
+	(requirements and objectives .. what makes for a good quality measure)
+	
+	
+Here are some thoughts:
+\begin{itemize}
+  \item Junggon's paper shows that we must consider the effects of physics and uncertainty. 
+  \item It seems likely that we can tweak our design to improve robustness.
+  \item Sources of uncertainty (ideally to get from data)
+	\begin{itemize}
+	   \item Object uncertainty is clear .. size, shape, friction, initial configuration (possibly large)
+	   \item Relative contact configuration is uncertain
+	   \item Actuator force direction and magnitude are uncertain.
+	\end{itemize}
+  \item Rollouts may be the place to start.
+  	\begin{itemize}
+	   \item  Randomize all uncertain parameters and simulate.
+	   \item  Histogram all unique event sequences.
+	   \item Build event tree.
+	   \item Record success.
+	   \item What can we detect / sense to distinguish expected success from possible failure?
+	   \item We have a quick way to gauge when we are outside the space of the example (2004 paper)
+	\end{itemize}
+  \item  The toy example is instructive.   One actuator should be better than two, because an additional actuator introduces additional error (two ships passing).    Giving the two actuators an offset that is not 90 degrees should improve robustness.  We would end up tuning Grasp A to push the thumb into its joint limit corner.   A change in shape would help avoid sliding problems with the other grasp (angle of surface results in force that pushes the index finger into its corner under low friction).
+  \item The choice of active vs. passive clearly matters, as in the first item above, and it would be good to show quantitatively.
+\end{itemize}	
+	

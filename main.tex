@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}        % standard LaTeX graphics tool
+
+%-------
+%Packages
+%-------
+%Extra packages
+\usepackage{times}
+\usepackage[tight,footnotesize]{subfigure}
+\usepackage[bottom]{footmisc}% places footnotes at page bottom
+\usepackage{url}
+\usepackage{color}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{theorem}
+%\usepackage{mathptmx}       % selects Times Roman as basic font
+%\usepackage{helvet}         % selects Helvetica as sans-serif font
+%\usepackage{courier}        % selects Courier as typewriter font
+%\usepackage{type1cm}        % activate if the above 3 fonts are not available on your system
+%\usepackage{makeidx}         % allows index generation
+%\usepackage{multicol}        % used for the two-column index
+%\usepackage{colortbl}
+%\usepackage{rotating}
+%\usepackage[geometry]{ifsym}
+
+\newenvironment{packed_itemize}{
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\newenvironment{packed_enumerate}{
+\begin{enumerate}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{enumerate}}
+
+
+% Labels 
+% Equation
+%\newcommand{\eref}[1]{Equation~\ref{#1}}
+% Section
+%\newcommand{\sref}[1]{Section~\ref{#1}}
+% Figure
+%\newcommand{\figref}[1]{Figure~\ref{#1}}
+% Algorithm
+%\newcommand{\aref}[1]{Algorithm~\ref{#1}}
+\setlength{\headheight}{0.1in}
+\setlength{\headsep}{0.2in}
+\setlength{\textheight}{8.65in}
+\setlength{\textwidth}{6.2in}
+\setlength{\topmargin}{-0.2in}
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+
+%------------------
+%Command redefinition
+%------------------
+\newcommand{\draftnote}[1]{\marginpar{\tiny\raggedright\textsf{\hspace{0pt}#1}}}
+\begin{document}
+
+
+
+\centerline{\Large\bf NRI:  Design and Fabrication of Robot Hands for Dexterous Tasks }
+
+\input{introduction.tex}       % Nancy
+
+\input{simpleExample.tex}  % Nancy
+
+\input{manipAnalysis.tex}    % Nancy
+
+\input{handDesign.tex}        % Stelian
+
+\input{graspNet.tex}            % Nancy
+
+\input{evaluations.tex}         % Nancy
+
+\input{relatedWork.tex}       % Nancy
+
+\input{broaderImpact.tex}    % Nancy
+
+\input{priorNSF.tex}   % Nancy
+
+\input{timeline.tex}    % Nancy
+
+\input{punchlist.tex}   % ALL!
+
+%\input{miscNotes.tex}   %  nsp scratchpad .. won't be included
+
+	
+
+\newpage
+
+
+\bibliographystyle{plain}
+\bibliography{./main}
+
+%
+%
+ \end{document}
+ 

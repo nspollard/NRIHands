@@ -1,0 +1,259 @@
+\section{Misc Notes}
+
+
+BENEFITS OF JOINT LIMITS AND INTRINSIC COMPLIANCE
+
+We can simulate joint limits in software, so it is an obvious question why build them in?
+
+Combat uncertainty.   If you push yourself against a joint limit, you know where you are in that dimension.
+
+Reduce complexity (fewer motors .. it may only be necessary to actuate in one direction and use compliance to passively drive a mechanism back to its limit)
+
+Reduce power (smaller motors .. the joint limit can resist arbitrary forces by passing them up to the much stronger arm and torso of the robot  ..  ideally all the way through to the ground .. passive forces can reduce the required operating range for the motors)
+
+Reduce sensor requirements (fewer and perhaps simpler sensors .. multiple joints may not need to be so carefully coordinated with one another)
+
+Perform actions more robustly (e.g., if one finger is pushing into a joint limit "corner", there may be a robust region within which an appropriate opposition force may be created)
+
+The simple example can illustrate all these things...
+
+
+
+
+Finger surface characteristics
+How do you compose multiple systems that are all one DoF?
+  clutch or ratchet mechanism
+
+Relative configurations of contacts matter more than the absolute coordinates
+
+Maximum tendon approach .. align tendons with known forces
+Force families describe family of forces that is sufficient
+
+Does Yong-Lae have a student who is trying to wrap sensors around objects? -- Nancy
+Ask Scott Hudson? -- Stelian
+
+Previous work -- design a linkage to achieve a given end effector motion .. or fit multiple points
+if not enough flexibility, back off 
+
+Tendons, linkages, soft fingers
+
+digital fabrication
+   understand the space of designs that are achievable .. variable compliance across a structure
+   incorporate this knowledge in the design process
+   print some compliant "fingers" with different compliance properties -- Stelian
+
+new tools for analysis of grasping and manipulation with compliance and joint limits
+new tools for design of mechanisms with same 
+
+
+
+WHAT DO WE MEAN  BY DEXTERITY IN THIS DOCUMENT?
+
+Here is from the NIST roadmap:
+"The term ?dexterity? itself must be fully and formally defined, along with its constituent functional capabilities. Examples of functional capabilities range from simple tactile sensing (contact achieved or not) to force-guided insertion of parts for snap-fit assemblies. "
+
+One part of dexterity involves reconfiguring the object within the hand in a robust manner [page of examples?].    We focus on this aspect, including picking the object up and replacing it, with intent to make the mechanical design itself as supportive of such motions as possible.
+
+There are other aspects of dexterity that are not covered (e.g., force-guided assembly).
+
+This can be done as a second part of the project .. we would want something like a general purpose device in the manner of the RCC where the mechanism does as much as possible to achieve assembly operations in situations with error as passively as possible.
+
+We could also look at what sensors can be most effective in improving the robustness of grasps and manipulations in our grasp net.
+
+
+Point 1.  We observe that there are a few specific dexterous motions that are extremely useful.  These motions allow us to acquire objects, move between grasps, and to accomplish tasks such as twisting (e.g., a doorknob) or pressing (e.g., the trigger on a spray bottle).    We tackle the problem of robot hand design in a way that makes these dexterous motions central.
+
+Point 2.  We illustrate that carefully placed joint limits and compliance can be of extreme benefit for design of a robust and efficient manipulator capable of dexterous manipulation.    Everyone should be designing with these elements in mind.
+
+Point 3.   We provide tools for design and analysis that focus on dexterous manipulation, built-in compliance, and joint limits
+
+Point 4.   To improve opportunities for success of a dexterous manipulation action, we introduce a technique for self assessment of a starting point leading into a dexterous manipulation.
+
+
+Expected contributions include:
+	(1) Develop / identify the grasp web, which consists of specific grasps or grasp families and nodes, along with the following links:
+		> acquire grasp
+		> transition between grasps
+		> adjust grasp
+		> use a tool, perform an action
+		> release grasp
+	(2) highlight joint limits, rest configuration, and intrinsic stiffness as critical design components for robust manipulation 
+	(3) develop design and analysis tools to accomplish a given grasp web:
+		> select mechanism degrees of freedom
+		> place joint limits
+		> route tendons (or otherwise customize delivery of force from actuators)
+		> assign rest configuration 
+		> assign intrinsic stiffness
+	(4) develop a self assessment test and accompanying adjustments that set the  grasp up for a probabilistically more successful manipulation
+		> I don't remember what this is
+	
+The grasp web (1) defines a set of relative postures, motions, and forces between contacts (e.g. finger pads) that must be achieved.
+
+The analysis tools (3) provide us with a principled way to write down characteristics of acceptable solutions and search this space for robot hand designs that are dexterous, yet have few degrees of freedom and are efficient and robust.
+
+
+
+ADD SELF ASSESSMENT OF GRASPS THROUGH FORCE TESTS
+
+Postulate that achieving some grasp is pretty easy but adjusting it for efficiency or for a successful manipulation is harder
+
+Technical:
+
+(A) Why I believe there is a grasp net:
+	> extensive investigation of human grasping and manipulation in the wild
+	> at first there seem a bewildering variety of grasps
+	> but many are similar, and we have canonical ways of shifting into, out of, and between them
+	> show a sample
+	> explain what's left to do
+	
+(B) Show benefit of joint limits
+	> simpler mechanism
+	> stable strategies for ensuring you are in the right place
+	> more robust to errors (show with an example?)
+	
+	INCLUDE FORCE SENSITIVE JOINT LIMITS (E.G., A NOTCH)
+
+(C) Design with joint limits
+
+(D) Manipulations to improve the grasp
+	> self assessment
+	> correction
+
+
+SHOULD DISCUSS SOMEWHERE CONTRIBUTIONS TO PLANNING OF THE GRASP NET
+
+SHOULD DISCUSS SOMEWHERE HOW INTERACTIONS WITH THE ENVIRONMENT ARE INCLUDED (E.G., COMPLIANTLY GET THE FINGERS IN AROUND OBJECTS)
+
+MENTION USE OF THE YALE BENCHMARK SET FOR EVALUATION
+	CODIFY MANIPULATIONS OF OBJECTS IN THIS SET?
+	HOW DOES THIS LINE OF THINKING INTERACT WITH TARGETING PERFORMANCE TESTS LIKE SHAP?
+	
+MAYBE WE HAVE TO ADDRESS THIS POINT:
+Quote from the Robotics Roadmap:
+Progress in robotic grasping and manipulation very likely will go hand in hand with the development of novel hand mechanisms. At the same time, participants felt that the potential of current hand technology was not fully leveraged by existing grasping and manipulation algorithms. It is therefore conceivable that many interesting and relevant applications can be addressed with available grasping and manipulation hardware.	
+
+
+
+"The NIST
+workshop identified the need for benchmarking dexterity, similar to the Southampton Hand 
+Assessment Procedure (SHAP) that was developed as a means to measure the performance of upper limb 
+prostheses [5].  SHAP defines 26 tasks using 8 abstract objects and
+14 activities to be performed by a subject 
+fitted with a prosthetic device.  Measurements of success and speed are used to calculate overall performance of 
+prostheses.  The procedures discriminate between functional and force limitations. "
+
+
+BACKGROUND
+
+There are quite a lot of good general ways to evaluate a hand, and any of these evaluation criteria can form the basis for design optimization
+	- specific grasps (Brock uses Feix et al.)
+	- manipulability (Salisbury and others)
+	- grip strength, sensing capabilities, etc.   (NIST report)
+	- Southampton Hand Assessment Procedure
+	- many others .. see the published review of hand dexterity assessments
+		> Minnesota Manual Dexterity Test
+		> Jebsen Test of Hand Function
+		> Functional Capacity Evaluation with Matheson Panel System
+		> Purdue Pegboard
+		> O'Connor Dexterity Test
+		> Bennet Hand Tool Dexterity Test
+	
+We also like the specific grasps technique, but we have to look at the complete picture (the grasp web)
+
+
+
+From the Robotics Roadmap / Space exploration
+Manipulation is defined as making an intentional change in the environment. Positioning sensors, han- dling objects, digging, assembling, grappling, berthing, deploying, sampling, bending, and even posi- tioning the crew on the end of long arms are tasks considered to be forms of manipulation. Arms, cables, fingers, scoops, and combinations of multiple limbs are embodiments of manipulators. Here we look ahead to missions? requirements and chart the evolution of these capabilities that will be needed for space missions. Metrics for measuring progress in manipulation technology include strength, reach, mass, power, resolution, minimum force/position, and number of interfaces handled.
+
+
+Concrete examples of fine manipulation.
+	- some can come from Elliott and Connelly
+
+Existing manipulators -- why are these things hard?
+
+	- consider roll, twiddle, pinch
+		- we need a justification of why use the Elliott and Connelly motions as a starting point
+			- see comments on the paper below
+
+	- we can analyze workspace
+		- however, even if we find the workspace to be adequate, it is still difficult to control those motions
+		
+	- suppose we consider the maxims that:
+		- passive is better than active in achieving a motion
+		- compliance is better than non-backdrivability
+		- using rigid components to push forces/torques proximally to stronger joints is always a good idea
+		
+	- necessary improvements are:
+		- carefully designed joint limits
+			- can we develop a theory of where to put stiffness and where to put compliance and use it in design?
+				- overall rest pose for "averaged out" assistance with support
+				- joint limits at workspace boundaries wherever possible and with priority where large forces are supported BUT no work must be done
+				- compliance where the hand must adapt to object shape and collisions (many examples in Jia video)
+		- careful design of passive stiffness
+		- careful placement of actuations
+		
+	- joint limits are usually seen as something to avoid (Google scholar search results)
+		- however, robot hands often may exploit locking mechanisms or lack of backdrivability 
+			- Krut et al. (mentioned below) discusses this less discussed point
+			- if joints are not backdrivable, they can always act as though they are at a joint limit
+			- however, all interactions will be stiff
+		- backdrivable joints give compliance, but must be carefully controlled to give support
+		
+	- quotes from "Stable, open-loop precision manipulation with underactuated hands"	
+		- "reduction of the number of actuators and constraints can make within-hand manipulation easier to implement and control"
+		- "under actuated, passively adaptive grippers can also be tuned to make in-hand manipulation possible with minimal sensing"
+		- "we will see that the ability to grasp without locking the fingers is a key to achieving robust in-hand manipulation"
+		- useful analysis of the effects of actuator motion on a grasped object
+		- "if the stiffness of a contact constraint is large relative to the constraint's magnitude, then it is quite possible for a small perturbation of the actuators to cause the fingertip to lose contact, or to crush the object"
+		
+	- Falco et al. article pending IEEE publication
+		- "This document presents the beginnings of a framework for robotic hand performance benchmarking. Many of the concepts presented are the results of an informal working group1 organized by the National Institute of Standards and Technology (NIST) that continues as part of the recently formed IEEE Robotics and Automation Society (RAS) Robotic Hand Grasping and Manipulation (RHGM) Technical Committee2. "
+		- reference this in the context of evaluation
+			- example, if planning a series of hurdles that a design must be capable of achieving .. would those become benchmarks?
+		- functional tests, to evaluate purposeful grasping and manipulation actions were not included in this document
+		
+	- Elliott and Connelly
+		- state a belief that intrinsic manipulation movements "can be reduced to three basic classes, which we call simple synergies, reciprocal synergies and sequential patterns"
+		- "Most kinds of intrinsic movement involve a single co-ordinated pattern of digit movements. "
+		- "However, some other patterns entail the independent co-ordination of digits in a characteristic sequence"
+		- "Within the simultaneous patterns, simple and reciprocal synergies are distinguished. Simple synergies are de- fined as those in which all movements of the participating digits, including the thumb, are convergent flexor synergies. There may be an alternation of flexor and extensor synergies, as in repeatedly squeezing a rubber bulb, but in either case the movements of all the digits are the same. Reciprocal synergies, by contrast, involve combinations of movements in which the thumb and the other participating digits show dissimilar or reciprocating movements, such as flexion of the fingers with adduction or extension of the thumb. The justification for distinguishing these two classes of synergy is that only in the case of reciprocal synergies is the thumb's capacity for movement independent of the fingers used in the manipulation of objects. A high proportion of intrinsic movements appear to fall into this category."
+		- the authors observe that even in writing (dynamic tripod), the three radial fingers move in a flexor/extensor synergy, creating vertical elongation of the letters
+		- "We have the strong impression that use of the radial aspect of the index in twiddle confers a greater potential power to the movement, and also a more stable hold upon the object before or after movement. It is possible to demonstrate a shift to a more radial use by requiring a subject to tighten progressively stiffer nuts."
+		
+		
+	- Krut et al. Extension of the Form Closure Property to Underactuated Hands
+		- deals with condition where contacts may not be fixed in space
+		- check that some unidirectional kinematic constraint operates in any direction the object may care to move
+				
+	- Prattichizzo et al. OnTheManipulability.pdf for categorizing manipulability of underactuated hands
+		- there are a number of references relating to synergies here .. where do the synergies come from?    PCA in all cases???
+			- synergies in robot hand design [3]
+			- impedance controller derivation including synergies implemented on DLR hand [5]
+			- mapping between human and robot synergies with different kinematics [6]
+			- control of force and motion of grasped object using synergies [7]
+			- synergies and grasp quality [8]
+			
+	- how do you design where to use limits and where to have compliance?
+		
+	- one interesting thing is the interaction between degrees of freedom in thinking of joint limits
+		- index finger is a good example, with available motion decreasing as the finger is flexed
+		
+	- what about the idea of simplicity in design
+		- more DoF at joint limits is simpler (easier to achieve with confidence and limited sensing)
+		- tendons aligned with a desired direction of motion is simpler
+		
+	- a high level of compliance is desirable to avoid damaging objects and to simplify execution of everyday behaviors
+		- we can find a lot of high compliance actions in the Jia and Daniel video
+		
+	- compare controls for shadow hand to an idealized situation with:
+		- flat plane (joint limit)
+			- eliminates a source of error in reaching and sensing your position
+		- single control (e.g., flexor)
+			- eliminates a source of error in coordinating your motion
+		- passive force aiding the motion (e.g., passive force pressing thumb to index finger for roll or twiddle)
+			- reduces errors that can arise in controlling forces
+			
+		- how do we compare?
+			- we can push simple error models through the two scenarios...
+		
+	
