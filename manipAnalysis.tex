@@ -1,11 +1,47 @@
 \section{Dexterous Manipulation Analysis with Joint Limits and Compliance}
 
-	(requirements and objectives .. what makes for a good quality measure)
+Traditional grasp and manipulation analysis assumes we operate the hand far from singularities and joint limits.	   In such a case, the dynamics of the system may be linearized and used to estimate our ability to control an object and apply and resist forces within a local configuration space [refs].   Such estimates may be used as a basis for hand design [ref].
+
+However, such analyses are limited when it comes to understanding the broad spectrum of capabilities of a proposed robot hand, and designers have formed other tests, such as workspace analyses [Feix comparing to human hand] and heuristics such as ability to oppose the thumb to each of the fingers.
+
+We propose to broaden such tests and make them focused on a broad spectrum of real-world grasping and manipulation actions that are observed to be of great use in everyday goal-directed activities.   We advocate working from a specific set of well-defined target grasps and manipulations.    We suggest that libraries of such specific tests be added to the benchmarking metrics that are under development.   Our philosophy is first make a hand that is able to perform these manipulations in exactly the manner described and then we can be creative about how to achieve the same goals more effectively.  
+
+[Get in the idea here of needing to examine a sufficiently complex system to fully understand it.]
+
+We observe that joint limits are not avoided in human motion.   In contrast, in the human system, joint limits and singularities are often exploited.    The limit at our knee that facilitates straight leg walking is a well known example, but there are many examples in grasping and manipulation as well.   [FIGURE?]   In a lateral grasp, the moderately flexed fingers can passively support large lateral forces.   Large forces can be transmitted through our palm all the way up to our strong shoulder muscles, or even through to the ground in some cases.   Pressing hard with a fingertip will also exploit joint limits.
+
+New tools are needed to work with joint limits and compliance as first level design tools on par with selection of actuators and location of degrees of freedom.     In addition, we need standard processes for evaluating robustness in performing complex manipulation actions, not only in maintaining a single grasp.  We propose to address these gaps.
+
+Specific problems that we will address include:
+\begin{itemize}
+  \item  Fast algorithms to prune subsets of the design space that are not feasible.
+  \item Fast algorithms to determine feasibility (e.g., ensure required task forces can be actively applied over an entire manipulation trajectory).
+  \item Efficient closure tests in the presence of joint limits.
+  \item Fast algorithms to estimate robustness of a manipulation.
+\end{itemize}
+
+\subsection{Example:  Force Closure with Joint Limits}
+
+Force closure tests and many grasp quality measures examine whether it is possible to resist disturbances and apply task forces given the locations and friction properties at contacts.    However, this approach does not in general differentiate between forces which must be actively applied to the object and those which can be passively resisted.    Joint limits will prevent motion in a given direction and can allow the hand to resist large forces in that direction, but the joint limit may be an intended as an approximately frictionless surface, and care should be taken in expressing ability of a contact to resist forces tangent to that limit direction.
+
+[Work out a first pass at equations here.]
+  
+Ideally, good things should happen if we just squeeze, as in the Trinkle 1990 paper.
+Otherwise, we want simple control algorithms where the hand can respond to local variations at each contact -- e.g., reactions to roll, slide, or load imbalance.
 	
+	
+\subsection{Sensing}
+
+The promise is radically more competent hand designs given our current level of sensing capabilities and guidelines for sensing requirements that will most quickly increase capabilities.
+
+
+
+\subsection{Random thoughts that will either be incorporated or go away}
 	
 Here are some thoughts:
 \begin{itemize}
   \item Junggon's paper shows that we must consider the effects of physics and uncertainty. 
+  \item Gravity is another tool and we should design our manipulations where possible to take advantage of gravity.
   \item It seems likely that we can tweak our design to improve robustness.
   \item Sources of uncertainty (ideally to get from data)
 	\begin{itemize}
