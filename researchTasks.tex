@@ -1,0 +1,24 @@
+\section{Research Tasks and Questions}
+
+\smallskip\noindent
+{\bf (1) Quasistatic Grasp and Manipulation Analysis that considers both Compliance and Joint Limits.}  Extend the simple example to more complex scenarios, including multiple degree of freedom fingers, redundant mechanisms, actuators and links of various types, different varieties of joint limit surfaces.   Our goal is to quickly evaluate the effect of any design change so that alternative designs can be explored and the hand can be optimized in a very fast search loop.
+
+\smallskip\noindent
+{\bf (2) Fast techniques for Evaluating Robustness.}   In the Simple Example, we evaluated robustness to variation through different rollouts of the manipulation under samples of a distribution of possible mechanisms and scenarios.   Using rollouts to evaluate success in a variety of possible situations (or over a belief state) is functional, but very slow.   In other research (e.g., \cite{koval2016pre}) we find the time required to perform rollouts to be a constant bottleneck to allowing complexity of scenarios to increase.   Using simulation rollouts will not scale well to the breadth of situations we would like to address in this proposal.
+
+Previous research (PI Pollard) has resulted in techniques that can use a simple and fast linear projection to analyze robustness to errors in placing the fingers on an object \cite{pollard2004closure}.   We have extended the process to evaluate robustness for manipulation tasks \cite{Pollard:WAFR02}, shown that the point of view can be reversed to express ability to grasp objects of different geometries \cite{pollard20045}.   Following our research in \cite{Li:graspDB07}, the approach can be extended to work with tendon driven systems and other interesting mechanisms.
+
+There has not been space to discuss it in detail here, but we have a sketch of a solution to extend this approach as follows.    Suppose a mechanism design for which we wish to test robustness.    Given a quasistatic  solution to manipulate one object, develop a test that utilizes a small number of linear projections to evaluate the expected success of any combination of uncertainties in mechanism and variations in object geometry, following the approach of geometrically representing solutions that are "good enough", e.g. 90 percent as good as the example along some criterion.   These projections will be trivially fast and will not require analyzing details of each object or computing a mechanism trajectory.
+
+Funding for this proposal will give us the opportunity to investigate this idea properly.   The potential impact is large, both for manipulation planning and mechanism design, as having linear projections in the inner loop of a planning or optimization process can speed these operations by orders of magnitude, allowing real-time planning and user-in-the-loop interactive design optimization.
+
+\smallskip\noindent
+{\bf (3) Design Optimization Tools that Scale to ever Larger Grasp Nets and manipulator complexity.}   [STELIAN FLESH THIS OUT A BIT]
+
+ \smallskip\noindent
+{\bf (4)  Making Predictions match Reality.}   Our various tests and analysis make many predictions, e.g., that one mechanism will result in more robust manipulation actions than another.  Do these predictions match reality?  We will test this question and investigate how best to use data from real robot and component trials to improve the accuracy of these predictions by improving our models.
+
+ \smallskip\noindent
+{\bf (5) Understanding the Delta Provided by different Sensing Approaches.}  We hypothesize that the best role for sensing in many manipulation actions is to identify when things are going very wrong and to make a straightforward adjustment to compensate.   Reflexes are a good example, but lifting the object or moving it aside to clear an obstacle.
+
+
