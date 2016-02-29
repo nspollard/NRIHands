@@ -1,13 +1,26 @@
 \section{Dexterous Hand Design / Optimization}
 
-How we will create the form to follow the function!
+%relevant work to discuss: http://biorobotics.harvard.edu/robotic_hand_optimization.html
+%http://bbdl.usc.edu/Papers/2013_IJRR_Inouye_Anthropomorphic_Hand.pdf
 
-Some random thoughts
-\begin{itemize}
+We will develop mathematical models and algorithmic approaches to co-design the mechanical structure of a robot's hand and the control policies needed for specific dexterous manipulation tasks. Our hypothesis is that by complementing each other and working in unison, control policies can be significantly simpler and mechanical structures -- joint stops, compliance, etc. -- can passively improve the robustness of the task while reducing sensing and actuation requirements. 
 
-  \item Good simulations of the mechanisms that are being proposed are key and are very hard.   Can we get good material models?    Can we construct good models of uncertainties so that our simulation rollouts match our experiments?
+The design process will begin with a specific task. In particular, we assume as input the set of time-varying contacts and contact forces between the hand and the object being manipulated. We further assume that a fully actuated robot hand controlled with perfect state knowledge would be able to generate these contacts and contact force trajectories. Through an iterative process, our mathematical models will be used to replace active degrees of freedom with appropriate passive mechanical structures such that a balance between adaptability and simplicity is achieved. We illustrate the proposed iterative design process with several use cases.
 
-  \item Can we create a setup that allows lots of randomized tests for this purpose?    Making simulations match reality appears to be hot right now.
-  
-\end{itemize}
+\subsection{Designing Linkage Structures}
 
+In prior work, CO-PI Coros developed a computational system for design complex linkage structures that generate a desired motion \cite{}. This work, which we briefly summarize here, constitutes the starting point for our investigations.
+
+The input to the design system consists of set of rigid links connected to each other through virtual actuators. The angle trajectories executed by the actuators define the target motion. As an example, such a structure could represent one finger of a hand performing a manipulation task (Fig \ref{}). In principle, if space allows, physical actuators could be directly used to replace their virtual counterparts when fabricating the robot hand. However, this would come at an increased cost, a more complicated mechanical design, a heavier setup, and it would require a sophisticated control policy that coordinates all the actuators. As an alternative, the computational design system proposed by CO-PI Coros iteratively replaces virtual actuators with new rigid links that couple the motion of different parts of the mechanism. The new attachment locations and length of the new rigid links are automatically optimized such that changes to the original motion of the kinematic chain are minimal.
+
+More details will follow, as well as brief descriptions for extensions to include compliance and stop limits and reasoning about forces too, and not just kinematics.
+
+%Some random thoughts
+%\begin{itemize}
+%  \item Good simulations of the mechanisms that are being proposed are key and are very hard.   Can we get good material models?    Can we construct good models of uncertainties so that our simulation rollouts match our experiments?
+%  \item Can we create a setup that allows lots of randomized tests for this purpose?    Making simulations match reality appears to be hot right now. 
+%\end{itemize}
+
+\subsection{Cable-driven, continuously deforming structures}
+
+Talk about the option of starting with an elastically-deforming structure for each finger of the hand. We can either start with a large number of actuated virtual tendons, and figure out which to remove, or add them one by one, optimizing routing points.
