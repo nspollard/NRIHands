@@ -2,7 +2,18 @@
 
 Robot dexterity is critically important for robots working alongside people and for robots working in human spaces.    Robots must be able to manipulate human objects and use tools made for people in order to assist people in performing tasks from mission critical to everyday.   
 
-Unfortunately, despite decades of development of high degree-of-freedom dexterous robot hands since the 80's, dexterous manipulation has remained elusive.  Dexterity is a Grand Challenge goal.   In fact, the 2013 Robotics Roadmap \cite{christensen2009roadmap} states:
+\begin{figure}
+\begin{center}
+%{\includegraphics[width=6in]{./images/wrenchPickup.png}}
+\vspace*{2in}
+\end{center}
+\caption[]{We propose to develop the underlying analysis techniques and mechanism optimization approaches to enable us (and others) to design  robot hands from the ground up to perform robustly dexterous manipulation tasks such as these.}
+\label{DexterousExamples}
+\end{figure}
+
+Unfortunately, despite decades of development, dexterous manipulation has remained elusive.   Robot hands cannot lift a wrench in a pinch grasp and slide it into a secure grasp for use with ease.   Robot hands cannot handle a pair of pliers with competence.   Even the simple task of grasping and turning a lever or knob can be a challenge;   compare to the variety of modes of the "twist" action shown in Figure \ref{DexterousExamples}.   Our view is that robots fail in these tasks in large part because no one has designed a robot hand from the ground up to be robustly competent at exactly these kinds of manipulations.
+
+The 2013 Robotics Roadmap \cite{christensen2009roadmap} states:
 \begin{quotation}
 {\small \it
 Robot arms and hands will eventually out-perform human hands. This is already true in terms of speed and strength. However, human hands still out-perform their robotic counterparts in tasks requiring dexterous manipulation. This is due to gaps in key technology areas, especially perception, robust high fidelity sensing, and planning and control. The roadmap for human-like dexterous manipulation consists of the following milestones:
@@ -12,26 +23,18 @@ Robot arms and hands will eventually out-perform human hands. This is already tr
 	\item 15 years: High-complexity hands with tactile array densities, approaching that of humans and with superior dynamic performance, will be capable of robust whole-hand grasp acquisition and dexterous manipulation of objects found in manufacturing environments used by human workers.
 \end{itemize}}
 \end{quotation}
-In this set of milestones, dexterous manipulation is not mentioned for the 5 year mark.   Dexterity is expected in limited form at 10 years, and approaching human levels in 15 years.
+Dexterous manipulation is not mentioned for the 5 year milestone.   Dexterity is expected in limited form at 10 years, and approaching human levels in 15 years.
 
-{\it We propose to enable dexterity at the 5 year mark through task directed design with emphasis on the role of joint limits and compliance.}
+{\it We propose to enable dexterity at the 5 year mark by designing robot hands from the ground up to do the kinds of dexterous manipulation tasks we see in Figure~\ref{DexterousExamples}.}
 
-There are many very excellent research groups working on the critical areas of sensing, planning, and control.   Our approach is orthogonal and complementary to these efforts.    We aim to reduce the load on sensing, planning and control by designing the mechanism to be as favorable to the intended task set as possible by developing new analysis and design tools for crafting the robot hand to make dexterous manipulation easier from the start.
+There are many very excellent research groups working on the critical areas of sensing, planning, and control.   Our approach is orthogonal and complementary to these efforts.    We aim to reduce the load on sensing, planning and control by designing the mechanism to be as favorable to the intended task set as possible by developing new analysis and design tools for optimizing the robot hand to make dexterous manipulation easier from the start.
 
-Our approach centers around several elements:  (1) "Grasp Net" benchmarks to explore manipulation at its full complexity, (2) Mechanism design focused on specific tasks that are well known (i.e., the Grasp Nets), (3) Strategic Placement of Actuators, Joint Limits, and Compliance, and (4) Strategic consideration of Sensing.
+This is a {\bf high risk / high reward proposal}.   The risk is that dexterous manipulation is  complex.   However, we observe commonalities in how people perform manipulation tasks that indicate sufficient structure to make design optimization feasible.   For the reward, consider the change that can be effected by a robot hand that can manipulate the same objects and tools as its human counterpart in a cooperative task and carry out dexterous actions easily because it was designed to do just that.
 
-\smallskip\noindent
-{\bf (1) "Grasp Net" benchmarks to explore manipulation at its full complexity.}   To tackle dexterous manipulation head-on, we must consider grasping and manipulation in its full complexity.   We take inspiration from human dexterity.   Full scale humanlike dexterous manipulation may appear enormously complex.   However,  we have observed a relatively small number of grasping tasks and manipulations that are used over and over, with common actions linked to one another, forming what we call Grasp Nets.   These Grasp Nets give us a way to proceed without oversimplifying.  We propose to create Grasp Net benchmarks to cover expanding portions of the dexterous manipulation space.   In tandem, we will develop evaluation procedures that test ability of a mechanism to accomplish Grasp Net tasks in the presence of uncertainty.   One project goal is to create and debug these tests to contribute them to the Roadmap to Progress Measurement Science in Robot Dexterity and Manipulation \cite{falco2014roadmap} where evaluation metrics for dexterous manipulation are needed.
+Our approach centers around several elements:  {\bf "Grasp Net" benchmarks} to explore manipulation at its full complexity (Section~\ref{secGraspNet}), {\bf Mechanism design} focused on manipulation tasks (Section \ref{secHandDesign}),  Strategic Placement of {\bf Actuators, Joint Limits, and Compliance} (Section \ref{secManipAnalysis}), and later in the project Strategic consideration of {\bf Sensing} (Section \ref{secQuestions}).
 
-\smallskip\noindent	
-{\bf (2) Mechanism design focused on specific tasks that are well known (i.e., the Grasp Nets).}   Mechanisms will be designed specifically to accomplish grasps and manipulations within the Grasp Nets, manufactured, and evaluated on the Grasp Net benchmarks in an iterative process.
-Even the initial Grasp Nets will include families of objects for generality.   They will reflect real-world manipulations and assume considerable uncertainties and variation.   But they will be concrete lists of benchmarks that the hand must accomplish, facilitating rapid evaluation and design exploration.   Our goal is to pursue generality while rooting our evaluation of possible hand designs solidly in useful tasks in the real world.
+Figure \ref{SimpleExampleResults} shows a very simple robot hand which we developed to illustrate the potential.  Through our design optimization process, we went from an initial manually designed version that was fiddly and difficult to coordinate to one where the manipulation almost does itself.  A hand designed to do the manipulation tasks in Figure~\ref{DexterousExamples} as robustly as possible will change the landscape in terms of potential robot applications, especially in real-world applications such as where humans and robots work together and cooperate to accomplish a goal.
 
-\smallskip\noindent
-{\bf (3) Strategic Placement of Actuators, Joint Limits, and Compliance.}  We believe that the keys to robustness of hand designs will be selection and placement of a small number of actuators, generous use of joint limits, and strategic use of built-in compliance.    We will explore a variety of actuator designs and mechanisms.   We will develop new tools to analyze manipulation capabilities in the presence of large scale compliance and joint limit surfaces.    Theoretical developments and models will be validated and improved with experimental data collected from many design iterations, component testing, and system testing. 
 
-\smallskip\noindent
-{\bf (4) Strategic consideration of Sensing.}    Sensor design will be considered in later stages of the project with the point of view of what type of sensor could most improve performance of the mechanism on its intended tasks (e.g., increase generality or robustness and/or eliminate catastrophic failure).  Primarily reflex and error correcting behaviors will be considered, e.g., response to slipping of the grip, total loss of contact, or stopping of expected motion.   It is encouraging that in our human subjects studies we observe frequent failures such as collisions prior to reaching the intended destination, which are resolved (after a delay of approximately 100ms) with characteristic corrections.   Our first line of attack will be to enable similar behavior.
 	
-PI Pollard brings decades of experience in grasping and manipulation analysis and experience working with various robotic hands and systems.   PI Coros brings experience in optimal design of creative, complex mechanisms to accomplish user specified tasks, as well as 10 years of experience in control algorithms for complex tasks.     This combination of skills is critical for designing and creating robot hands with the capability and skills to grasp and manipulate robustly in complex, real-world scenarios where humans and robots live and work together.
 

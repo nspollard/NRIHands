@@ -1,11 +1,12 @@
 \section{Dexterous Hand Design / Optimization}
+  \label{secHandDesign}
 
 %relevant work to discuss: http://biorobotics.harvard.edu/robotic_hand_optimization.html
 %http://bbdl.usc.edu/Papers/2013_IJRR_Inouye_Anthropomorphic_Hand.pdf
 
 We will develop mathematical models and algorithmic approaches to co-design the mechanical structure of a robot's hand and the control policies needed for specific dexterous manipulation tasks. Our hypothesis is that by complementing each other and working in unison, control policies can be significantly simpler and mechanical structures -- joint stops, compliance, etc. -- can passively improve the robustness of the task while reducing sensing and actuation requirements. 
 
-The design process will begin with a specific task. In particular, we assume as input the set of time-varying contacts and contact forces between the hand and the object being manipulated. We further assume that a fully actuated robot hand controlled with perfect state knowledge would be able to generate these contacts and contact force trajectories. Through an iterative process, our mathematical models will be used to replace active degrees of freedom with appropriate passive mechanical structures such that a balance between adaptability and simplicity is achieved. We illustrate the proposed iterative design process with several use cases.
+The design process will begin with a specific family of tasks (i.e., a Grasp Net). In particular, we assume as input the set of time-varying contacts and contact forces between the hand and the object being manipulated. We further assume that a fully actuated robot hand controlled with perfect state knowledge would be able to generate these contacts and contact force trajectories. Through an iterative process, our mathematical models will be used to replace active degrees of freedom with appropriate passive mechanical structures such that a balance between adaptability and simplicity is achieved. We illustrate the proposed iterative design process with several use cases.
 
 \subsection{Designing Linkage Structures}
 

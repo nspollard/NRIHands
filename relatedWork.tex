@@ -1,31 +1,12 @@
 \section{Comparison to Related Work}
 
-Researchers have thought a lot about how to evaluate grasps, plan grasps
+Design optimization for robot hands has been considered by a number of research groups.   Salisbury [REF] designed the Stanford/JPL hand to optimize ability to manipulate a small object held in the fingertips.  Dollar and his colleagues optimize hands to improve ability to capture the object in a grasp and considers the manipulation task of lifting an object from a table with a two actuator hand [REFS].     Ciocarlie and colleagues optimize a hand to enclose objects as well as possible, whether they be small and flat or larger and round [REF].    Hammond III and colleagues consider which joint ranges of motion can be reduced (or even eliminated) while maintaining ability to achieve a fixed set of grasps [REF].   [WHO EXACTLY] have designed hands that make use of one or more layers of synergies motivated in part by the major directions of motion of the human hand [REFS].    
+We are inspired by these and other efforts in robot hand design optimization and wish to take the next leap to optimize for complex manipulation tasks observed to be critical for dexterity in human environments.
 
-but design of a mechanism for a specific suite of grasp and manipulation actions that is meant to be general is less well considered.
+There have been many exciting highly dexterous hands designed, some with the explicit goal of duplicating or exceeding the capabilities of the human hand.   Just a few examples are found in these references [UTAH/MIT, ACT, SHADOW, GIFU, ITALIAN, JUSTIN, TODOROV].    Perhaps in contrast with some of these works, we begin with the goal to achieve a given network of grasps and manipulation actions, with the approach to make the hand exactly as capable as it needs to be -- not less and perhaps not more -- because adding limits can help.   Our hand may or may not look much like the human hand.   How it comes out will depend on the design elements we provide and what is needed for it to do the required manipulations in a robust manner.
 
-Ciocarlie - value of optimization considering compliance.   Mechanism is optimized to keep fingertips parallel until contact and then enclose the object as well as possible
+There has been a virtual explosion of ideas on how to use rapid prototyping techniques in robot design [DOLLAR], in soft robot design [BROCK, HARVARD, MIT], and design of compliant elements such as joints [DESHPANDE], making this a great time to be exploring the research problems of this proposal.
 
-Frank Hammond III
+There has been much work on grasp and manipulation analysis that is also very inspiring [TRINKLE, BICCHI AND PRATTICHIZZO, BURDICK].   We especially appreciate the point of view that we can use "defective" mechanisms to our advantage and that we wish to configure the mechanism so that abstractly "if we just squeeze," good things will happen.    We expect to build on and extend this research, which will become more and more valuable as we build robots which exploit limits, singularities, asymmetries, and highly coupled action as a matter of course.
 
-Dollar optimizes hands to improve ability to capture the object in a grasp and considers the manipulation task of lifting an object from a table with a two actuator hand.
-
-[Italians] design to match principle components representing grasping synergies.
-
-Salisbury designed the Stanford/JPL hand to optimize ability to manipulate a small object held in the fingertips.
-
-We are inspired by all of these efforts and wish to take the next leap beyond grasping and even fingertip manipulation to optimize for complex manipulation tasks observed to be critical for dexterity in human environments.
-
-Trinkle lever-up
-long train of Bicchi analysis papers
-
-
-Many dexterous robot hand designs attempt to be as capable as possible -- e.g., max manipulability.  
-
-In a way, we take the opposite approach -- as capable as it needs to be and no more.   Because limits help us.
-
-Traditional grasp and manipulation analysis assumes we operate the hand far from singularities and joint limits.	   In such a case, the dynamics of the system may be linearized and used to estimate our ability to control an object and apply and resist forces within a local configuration space [refs].   Such estimates may be used as a basis for hand design [ref].
-
-However, such analyses are limited when it comes to understanding the broad spectrum of capabilities of a proposed robot hand, and designers have formed other tests, such as workspace analyses [Feix comparing to human hand] and heuristics such as ability to oppose the thumb to each of the fingers.
-
-Abeel results suggest that learning the manipulations on the real robot is possible with small numbers of iterations.   We expect even faster learning and more generality because the mechanism is designed exactly to do this.
+The research of Abeel and colleagues [REFS] suggest that learning manipulations on real robots is possible with small numbers of iterations.   We expect even faster learning and more generality and robustness because the mechanism is designed exactly to do the manipulations is is performing.

@@ -1,5 +1,6 @@
-\section{The Grasp Net Benchmark}   
-
+\section{Grasp Net Benchmarks}   
+    \label{secGraspNet}
+ 
 \begin{figure}
 \begin{center}
 %{\includegraphics[width=6in]{./images/test.png}}
@@ -9,9 +10,10 @@
 \label{GraspNet}
 \end{figure}
 
+To tackle dexterous manipulation head-on, we must consider grasping and manipulation in its full complexity.   We take inspiration from human dexterity.   Full scale humanlike dexterous manipulation may appear enormously complex.   However,  we have observed a relatively small number of grasping tasks and manipulations that are used over and over, with common actions linked to one another, forming what we call Grasp Nets.   These Grasp Nets give us a way to proceed without oversimplifying.  We propose to create Grasp Net benchmarks to cover expanding portions of the dexterous manipulation space.   In tandem, we will develop evaluation procedures that test ability of a mechanism to accomplish Grasp Net tasks in the presence of uncertainty.   One project goal is to create and debug these tests to contribute them to the Roadmap to Progress Measurement Science in Robot Dexterity and Manipulation \cite{falco2014roadmap} where evaluation metrics for dexterous manipulation are needed.   
 
-In a series of human subject studies \cite{Liu2014, JiaDatabase, Chang:2009:RSSWorkshop, Chang:2014, liu2016annotating}, we have observed many commonalities between grasps and manipulations to acquire those grasps and move between them.   We show some examples here to motivate the idea that simple organizing principles exist.
+In this section, we provide some examples to illustrate the idea of a Grasp Net and some of the organizing principles we have observed through various human subject studies \cite{Liu2014, JiaDatabase, Chang:2009:RSSWorkshop, Chang:2014, liu2016annotating}.   
 
-Consider first the grasp taxonomy recently developed by Feix and colleagues \cite{feixgrasp}, which pulls together the wealth of research on grasp classification over the last century.   We find that the 33 grasps from this cumulative taxonomy can be placed into six groups (Figure \ref{GraspNet}, unpublished research by PI Pollard).  Variations within a group depend largely on object geometry.
+Consider first the grasp taxonomy recently developed by Feix and colleagues \cite{feixgrasp}, which pulls together the wealth of research on grasp classification over the last century.   We find that the 33 grasps from this cumulative taxonomy can be placed into six groups (Figure \ref{GraspNet}),.  Variations within a group depend largely on object geometry.
 
-Furthermore, we observe common transitions between these categories, such that a brief motion causes a robest transition from one grasp to another.   The Figure shows several examples.   The collection of grasps and transitions consists of various connected components.   One aim of this proposal is to fill in the gaps in our current Grasp Net through directed human subjects experiments.   We have already collected one dates containing 21 grasps and more than 25 manipulations, forming a preliminary real-world Grasp Net.   The Figure shows our marker set and a sampling of fingertip positions in the hand coordinate frame for this dataset.
+Furthermore, we observe common transitions between these categories, such that a brief motion causes a robust transition from one grasp to another.   The Figure shows several examples.   The collection of grasps and transitions consists of various connected components.   One aim of this proposal is to fill in the gaps in our current Grasp Net through directed human subjects experiments.   We have already collected one data set containing 21 grasps and more than 25 manipulations, forming a preliminary real-world Grasp Net and have plans for several more such capture sessions.   The Figure shows our marker set and a sampling of fingertip positions in the hand coordinate frame for this dataset.
