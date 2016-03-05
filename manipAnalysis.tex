@@ -3,8 +3,7 @@
 
 \begin{figure}
 \begin{center}
-%{\includegraphics[width=6in]{./images/wrenchPickup.png}}
-\vspace*{2in}
+{\includegraphics[width=4in]{./figs/pushExample.png}}
 \end{center}
 \caption[]{Several designs with the goal of robust pushing.}
 \label{PushExample}
@@ -59,7 +58,7 @@ In addition to joint limits and compliance, there are of course other things tha
 \section{Grasp and Manipulation Analysis with Joint Limits}
    \label{secLimitAnalysis}
 
-One research challenge addressed in this proposal is to expand our analysis tools to deal well with joint limits.   We illustrate the problem and sketch a solution through the simple example in Figure~\ref{PushExample}.   Consider first Figure~\ref{PushExample} A.     The goal is to push into a surface, holding the object in the given grasp.   There will be variation in the task, as the object may contact the surface at different points and with different surface contact normals, resulting in varying force directions and moment about the object center of mass.    Each finger has one tendon to actuate it, with directions of actuation shown.    We assume the two fingers on the sides have considerable compliance in the horizontal direction.   Actuating these fingers does not help, as this will only cause the fingers to slide along the object surface.    With the design as shown in Figure~\ref{PushExample} A, the grasp will only be able to apply a very small range of task related forces to the object.
+One research challenge addressed in this proposal is to expand our analysis tools to deal well with joint limits.   We illustrate the problem and sketch a solution through the simple example in Figure~\ref{PushExample}.   Consider first Figure~\ref{PushExample} A.     The goal is to push into a surface, holding the object in the given grasp.   There will be variation in the task, as the object may contact the surface at different points and with different surface contact normals, resulting in varying force directions and moment about the object center of mass.   The Figure shows just a single example of task forces that could be encountered.    Each finger has one tendon to actuate it, with directions of actuation shown.    We assume the two fingers on the sides have considerable compliance in the horizontal direction.   Actuating these fingers does not help, as this will only cause the fingers to slide along the object surface.    With the design as shown in Figure~\ref{PushExample} A, the grasp will only be able to apply a very small range of task related forces to the object.
 
 We can examine the force balance equations.   Because the fingers are very compliant, forces on the fingers must be balanced to prevent them from moving:
 \begin{equation}
