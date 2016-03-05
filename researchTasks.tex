@@ -9,17 +9,7 @@ Primary tasks and research questions for this project follow.
 \smallskip\noindent
 {\bf (2) Fast techniques for Evaluating Robustness.}   Quasistatic Grasp and Manipulation Analysis as discussed in (1) considers a specific scenario.   However, we care very much about robustness to uncertainty, even (especially!) in the mechanism design stage.  In Section \ref{secManipAnalysis}, we showed how robustness could be evaluated through rollouts of the manipulation under samples of a distribution of likely scenarios.   Using rollouts to evaluate success is functional, but slow.    Using simulation rollouts may not scale well to the breadth of situations we plan to address.
 
-\begin{figure}
-\begin{center}
-%{\includegraphics[width=6in]{./images/wrenchPickup.png}}
-\vspace*{2in}
-\end{center}
-\caption[]{[ADD ALON PIC AND ROBOT EXAMPLES.  (Left) Our manipulation task can succeed for any of these (and more) geometries.   Inclusion in this set can be determined by linear projection.   (Right) Two examples of performance of the same manipulation on different geometries.   We propose to develop similar fast methods to test robustness of a mechanism to perform a manipulation in the inner loop of a design process.}
-\label{AlonManip}
-\end{figure}
-
-
-Previous research by PI Pollard has resulted in techniques that can use a simple and fast linear projection to analyze robustness to errors in placing the fingers on an object \cite{pollard2004closure}.   We have extended the process to evaluate robustness for manipulation tasks \cite{Pollard:WAFR02} (Figure \ref{AlonManip}) and shown that the same approach can be used to express ability to grasp objects of different geometries \cite{pollard20045} and to work with tendon driven systems \cite{Li:graspDB07}.
+Previous research by PI Pollard has resulted in techniques that can use a simple and fast linear projection to analyze robustness to errors in placing the fingers on an object \cite{pollard2004closure}.   We have extended the process to evaluate robustness for manipulation tasks \cite{Pollard:WAFR02}  and shown that the same approach can be used to express ability to grasp objects of different geometries \cite{pollard20045} and to work with tendon driven systems \cite{Li:graspDB07}.
 
 Briefly, the idea we have exploited in this previous research is to portion variations out to different parts of the mechanism (e.g., to each contact).   As long as each contact is confronted with a situation within its portioned space of variations, we can guarantee that overall, the task can be completed at least X percent as efficiently as an example.   Decreasing X gives more freedom, but less efficient results (e.g., for lower X we may need to reduce weight limits on manipulated objects).   Unlike many other approaches, which scale exponentially with number of contacts, this approach scales only linearly with number of contacts and works better and better as number of contacts increases; with large numbers of contacts comes great ability to adapt to uncertainties and variations.   Many human manipulation tasks benefit from large numbers of contacts and we expect to exploit this property.
 
