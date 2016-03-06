@@ -1,20 +1,82 @@
 \section{Dexterous Hand Design / Optimization}
   \label{secHandDesign}
 
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bG}{\mathbf{G}}
+\newcommand{\bH}{\mathbf{H}}
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bJ}{\mathbf{J}}
+\newcommand{\bK}{\mathbf{K}}
+\newcommand{\bM}{\mathbf{M}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\bc}{\mathbf{c}}
+\newcommand{\bd}{\mathbf{d}}
+\newcommand{\be}{\mathbf{e}}
+\newcommand{\bff}{\mathbf{f}}
+\newcommand{\bg}{\mathbf{g}}
+\newcommand{\bk}{\mathbf{k}}
+\newcommand{\bm}{\mathbf{m}}
+\newcommand{\bn}{\mathbf{n}}
+\newcommand{\bp}{\mathbf{p}}
+\newcommand{\bs}{\mathbf{s}}
+\newcommand{\bt}{\mathbf{t}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bl}{\mathbf{l}}
+\newcommand{\bq}{\mathbf{q}}
+\newcommand{\bw}{\vec{w}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bS}{\mathbf{S}}
+\newcommand{\bj}{\mathbf{j}}
+\newcommand{\bT}{\mathbf{T}}
+\newcommand{\bP}{\mathbf{P}}
+
+\newcommand{\bbx}{\bar{\bx}}
+
 %relevant work to discuss: http://biorobotics.harvard.edu/robotic_hand_optimization.html
 %http://bbdl.usc.edu/Papers/2013_IJRR_Inouye_Anthropomorphic_Hand.pdf
 
-We will develop mathematical models and algorithmic approaches to co-design the mechanical structure of a robot's hand and the control policies needed for specific dexterous manipulation tasks. Our hypothesis is that by complementing each other and working in unison, control policies can be significantly simpler and mechanical structures -- joint stops, compliance, etc. -- can passively improve the robustness of the task while reducing sensing and actuation requirements. 
+Recent work has shown that carefully engineered mechanical designs can prove crucial in improving the versatility of robotic manipulators for static grasping tasks~\cite{Ciocarlie:2014:VGV:2674203.2674213}. Inspired by these findings, we propose mathematical models and algorithmic approaches to co-design mechanical structures and control policies for dexterous manipulation. Our hypothesis is that by complementing each other and working in unison, control policies can be significantly simpler, and appropriate mechanical features -- joint stops, compliance, etc. -- can passively improve the robustness of the manipulation tasks while reducing sensing and actuation requirements. 
 
-The design process will begin with a specific family of tasks (i.e., a Grasp Net). In particular, we assume as input the set of time-varying contacts and contact forces between the hand and the object being manipulated. We further assume that a fully actuated robot hand controlled with perfect state knowledge would be able to generate these contacts and contact force trajectories. Through an iterative process, our mathematical models will be used to replace active degrees of freedom with appropriate passive mechanical structures such that a balance between adaptability and simplicity is achieved. We illustrate the proposed iterative design process with several use cases.
+The design process will begin with a specific family of tasks (i.e., a Grasp Net). More concretely, we will assume as input a set of time-varying contacts and contact forces between the hand and the object being manipulated. This information could come, for example, from trajectory optimization methods based on quasi-static models as described in Section~\ref{secManipAnalysis}. As a bottom-up approach, we will investigate methods to directly map joint limits and contact trajectories to optimized mechanisms. To this end, we will leverage the database of parameterized assemblies recently developed by PI Coros~\cite{Coros2013}. 
 
-\subsection{Designing Linkage Structures}
+We will also investigate top-down approaches to designing dexterous robot hands. Our strategy here will be to begin with a conceptual design of a highly actuated robot hand design. For example, if a dexterous manipulation task is described through motion capture data, then the initial design would be given by an actuated articulated structure that matches the kinematics of the performer's hand. The underlying assumption is that, with perfect state knowledge and optimal controllers, this robot hand would be able to perform the desired dexterous manipulation tasks. Through an iterative process, the mathematical models we will develop will be used to replace active degrees of freedom with appropriate passive mechanical structures such that a balance between adaptability and simplicity is achieved. 
 
-In prior work, CO-PI Coros developed a computational system for design complex linkage structures that generate a desired motion \cite{}. This work, which we briefly summarize here, constitutes the starting point for our investigations.
+%For bottom-up approaches, we will begin with a base mechanical design and incrementally add active and passive structures in order to improve the ability of the hand to apply the forces required for manipulation tasks. We illustrate the proposed iterative design processes with two representative use cases.
 
-The input to the design system consists of set of rigid links connected to each other through virtual actuators. The angle trajectories executed by the actuators define the target motion. As an example, such a structure could represent one finger of a hand performing a manipulation task (Fig \ref{}). In principle, if space allows, physical actuators could be directly used to replace their virtual counterparts when fabricating the robot hand. However, this would come at an increased cost, a more complicated mechanical design, a heavier setup, and it would require a sophisticated control policy that coordinates all the actuators. As an alternative, the computational design system proposed by CO-PI Coros iteratively replaces virtual actuators with new rigid links that couple the motion of different parts of the mechanism. The new attachment locations and length of the new rigid links are automatically optimized such that changes to the original motion of the kinematic chain are minimal.
+%\subsection{Top-down Design}
 
-More details will follow, as well as brief descriptions for extensions to include compliance and stop limits and reasoning about forces too, and not just kinematics.
+Figure~\ref{} illustrates a conceptual, fully actuated robot hand consisting of rigid links connected to virtual actuators that control their motions. In principle, physical actuators could be directly used to replace their virtual counterparts when fabricating this robot hand. However, this would come at an increased cost, a more complex mechanical design setup, and it would require sophisticated control policies to coordinate all the actuators. As an alternative, we propose an automated design process that iteratively replaces virtual actuators with new rigid or compliant links that appropriately couple the motion of different parts of the hand mechanism. The attachment locations, length and material properties of the new mechanical components will be optimized such that changes to the functionality of the input kinematic chain are minimal. 
+
+The starting point for our investigations is a method recently developed by PI Coros and his colleagues. This method is used to design complex linkage structures that generate a desired motion trajectory~\cite{Thomaszewski14CDL}. The concept behind this method, which we will extend as part of our proposal, is based on a simple observation. Removing a motor and adding a new rigid link preserves the invariant that there are always as many constraints as degrees of freedom in the hand's mechanism: eliminating a motor removes one constraint, adding the (planar) link introduces three degrees of freedom, and two pin joints used to connect the new link to the existing structure result in four additional constraints. The motion of each mechanical component is thus either directly driven by a motor, or is mechanically coupled to that of other components.
+
+To determine which motor should be replaced, and how to optimally insert a new mechanical component, we build a mathematical model based on the following observation: if the distance $d$ between two points on a pair of existing components does not change as the hand performs the manipulation task, then these components can be connected through pin joints to a new rigid link of length $d$. Although the resulting mechanism would technically be over-constrained, the new link and its pin joints would be completely redundant. Removing a motor along the kinematic chain between the two components would resolve this redundancy while perfectly preserving the original motion. In general, there are no guarantees that such pairs of points always exist. Therefore, given two components, $c_a$ and $c_b$, we seek to find a pair of points $\bq_a$ and $\bq_b$ whose world-space distance varies least throughout the motion. The mean squared world-space distance between these two points is given by $l_{ab}=\frac{1}{n_s}\sum_i^{n_s}||\bq_a(t_i)-\bq_b(t_i)||^2$, where $n_s$ is a number of discrete time samples that span the entire motion, and the variance of this quantity is $ E_\mathrm{variance}=\frac{1}{n_s}\sum_i^{n_s}(||\bq_a(t_i)-\bq_b(t_i)||^2-l_{ab})^2$. When searching for the pair of points that minimize this variance term, it is crucial to ensure that singular configurations are avoided at all times. As shown in Fig.~\ref{fig:momentArm}, when the selected motor ($m$) is removed, the new link ($c_{new}$) becomes responsible for driving the motion of component $c_b$ by directly coupling it to component $c_a$. To ensure that the effective moment arm remains sufficiently large at all times, the area of the shaded triangle needs to always remain a safe distance away from zero. This can be accomplished through a log barrier term $E_\mathrm{area} = -\log\sum_i^{n_s}\text{area}\left(\bq_b(t_i),\bm(t_i),\bq_a(t_i)\right)^2$, where $\bm(t_i)$ denotes the world-space position of the motor $m$.
+
+Given two components $c_a$ and $c_b$ which are selected in an outer loop, our mathematical model will minimize a weighted combination of the terms $E_\mathrm{variance}$ and $E_\mathrm{area}$. With gradients and hessians for these objectives readily available, a Newton-Raphson scheme will be used to efficiently solve the resulting optimization problem. Once points $\bq_a$ and $\bq_b$ are found, they will define a candidate mechanical link to be inserted in the hand design. Our design system will then individually remove each motor on the kinematic chain between $c_a$ and $c_b$ and further optimize the motion of the resulting mechanism using the recent method developed by PI Coros and his colleagues~\cite{Bacher2015}. Importantly, this optimization step will not only adapt the kinematic parameters of the design, but also the actuator signals that control the motion of the hand mechanism. As an evaluation of the success of each potential replacement operation, we will measure the difference in motion between the initial, idealized hand design and the optimized mechanism which features fewer active degrees of freedom. If the resulting mechanisms deviate too much from the hand's initial motion, a new set of components will be selected. Otherwise, the replacement operation will be finalized and the process will repeat. 
+
+An exciting area we also plan to investigate is the problem of increasing the robustness of manipulation tasks through appropriately-designed mechanical structures. To this end, we will study additional objectives based on the linear robustness analysis researched by PI Pollard~\cite{Pollard:WAFR02,pollard2004closure,pollard20045}. To increase the versatility of the designs we can create, our models will also modulate the compliance of the mechanical links that are introduced as active degrees of freedom are removed from the design. This initiative will build on recent methods developed by PI Coros to optimize volumetric~\cite{Skouras2013} and rod-based~\cite{Jesus2015} mechanical structures. Leveraging multi-material 3D Printing capabilities, our approach will therefore be able to reason not only in terms of the motion of the mechanical hand (and therefore the trajectory of the contact points) but also in terms of the contact forces applied to the objects being manipulated.
+
+%In addition to optimizing the motion of the mechanical hand (which determines the contacts with the object being manipulated), our models will also need to reason about the forces that are being applied. Consequently, our models will modulate the compliance of the mechanical links that are introduced as active degrees of freedom are removed from the design. To achieve this goal, we will build on the work done by PI Coros in designing and optimizing volumetric~\cite{Skouras2013} and rod-based~\ref{Jesus2015} mechanical structures. Briefly, the relationship between displacements $\bu$ -- deformations away from a rigid configuration -- and forces $\bF$ is given by $\bF = K\bu$, where $K$ is a stiffness matrix that depends on material properties. 
+
+%\subsection{Bottom-up Design}
+
+%While top-down approaches rely on 
+
+%
+
+%We will be able to control the way in which torques generated by available motors get mapped to end effector forces.
+
+%- task robustness
+%- extensions to stops, forces, etc...
 
 %Some random thoughts
 %\begin{itemize}
@@ -22,6 +84,6 @@ More details will follow, as well as brief descriptions for extensions to includ
 %  \item Can we create a setup that allows lots of randomized tests for this purpose?    Making simulations match reality appears to be hot right now. 
 %\end{itemize}
 
-\subsection{Cable-driven, continuously deforming structures}
+%\subsection{Cable-driven, continuously deforming structures}
 
-Talk about the option of starting with an elastically-deforming structure for each finger of the hand. We can either start with a large number of actuated virtual tendons, and figure out which to remove, or add them one by one, optimizing routing points.
+%Talk about the option of starting with an elastically-deforming structure for each finger of the hand. We can either start with a large number of actuated virtual tendons, and figure out which to remove, or add them one by one, optimizing routing points.
